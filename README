@@ -9,14 +9,7 @@ year = {2010},
 journal = {Bioinformatics}
 }
 
-# you need to install Pyro, cf. http://pyro.sourceforge.net
-# (sudo yum install pyro _OR_ sudo aptitude install pyro)
-# On the server, TCP port 7766 must be open
-#                TCP port 9090 must also be open if the server is also
-#                the Pyro nameserver (default case)
-
-# if Pyro is not installed system wide, try this:
-export PYTHONPATH=~/usr/Pyro-3.10/build/lib
+# you need to install rfoo: http://code.google.com/p/rfoo/
 
 # Some usage examples:
 
