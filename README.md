@@ -47,7 +47,7 @@ Same than before but with a user defined output printer
 ```
 ./parallel.py -c SERVER_NAME
 ```
-For example, a set of clients can be spawn very quickly on a set of machines using TakTuk:http://taktuk.gforge.inria.fr/
+For example, a set of clients can be spawned very quickly on a set of machines using TakTuk: http://taktuk.gforge.inria.fr/
 ```
 taktuk -s -f machinefile broadcast exec {./parallel.py -c SERVER_NAME} 
 ```
