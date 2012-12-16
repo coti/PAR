@@ -51,6 +51,7 @@ class Master( rfoo.BaseHandler ):                                     # CC
         self.no_more_jobs   = False
         self.begin_command  = begin_cmd
         self.end_command    = end_cmd
+        self._methods = {}
 
     def get_work(self, previous_result = None):
         if previous_result:
@@ -96,7 +97,6 @@ def worker_wrapper(master, lock):
                 work = master.get_work()
                 not_started = False
             except:
-                import sys                                            # CC
                 print "Exception :", sys.exc_type, sys.exc_value      # CC
                 print "warning: retrying master.get_work()"
                 time.sleep(0.1)
@@ -245,12 +245,13 @@ if __name__ == '__main__':
         nb_jobs        = 0
         locks          = []
         if is_server:
-            rfoo.start_server( host=host, 
+            rfoo.start_server( host='', 
                                port=int(options.server_port), 
                                handler=Master)                        # CC
         if connect_to_server:
-            master = rfoo.connect( host=remote_server_name, 
+            handler = rfoo.connect( host=remote_server_name, 
                                    port=int(options.server_port) )    # CC
+            master  = rfoo.Proxy( handler )
             
         # start workers
         for i in range(nb_threads):
